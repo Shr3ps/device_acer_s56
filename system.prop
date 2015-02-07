@@ -1,0 +1,11 @@
+#
+# system.prop for p6000
+#
+
+# begin fota properties
+ro.fota.platform=MTK6732_KK
+ro.fota.type=phone
+ro.fota.oem=new-bund6732_KK
+ro.fota.device=k01q_e
+ro.fota.version=eng.jenkins.1419698357
+# end fota properties
