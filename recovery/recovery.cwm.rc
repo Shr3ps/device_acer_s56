@@ -83,11 +83,12 @@ on post-fs-data
 # -----------------------
 # Add by MTK
 # Create CIP mount point
-    mkdir /custom
-# mount cip partitions
     symlink /dev/block/platform/mtk-msdc.0/by-name/custom /dev/customimg
+    mkdir /custom
     exec /sbin/e2fsck -p /dev/customimg
     mount ext4 /dev/customimg /custom
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/custom
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/custom
 
 #custom the cpuinfo
     write /sys/custom_date/cpu_name "MT6732"
@@ -120,6 +121,25 @@ on boot
 
     class_start default
 
+# Load properties from /system/ + /factory after fs mount.
+on load_all_props_action
+    load_all_props
+
+# Mount filesystems and start core system services.
+on late-init
+    trigger early-fs
+    trigger fs
+    trigger post-fs
+    trigger post-fs-data
+
+    # Load properties from /system/ + /factory after fs mount. Place
+    # this in another action so that the load will be scheduled after the prior
+    # issued fs triggers have completed.
+    trigger load_all_props_action
+
+    trigger early-boot
+    trigger boot
+
 on property:sys.powerctl=*
     powerctl ${sys.powerctl}
 
@@ -146,6 +166,19 @@ service vold /sbin/minivold
     socket vold stream 0660 root mount
     ioprio be 2
     seclabel u:r:recovery:s0
+
+service surfaceflinger /system/bin/surfaceflinger
+    class main
+    user system 
+    group graphics drmrpc
+    onrestart restart zygote
+
+service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-system-server
+    class main
+    socket zygote stream 660 root system
+    onrestart write /sys/android_power/request_state wake
+    onrestart write /sys/power/state on
+    onrestart restart media
 
 # virtual sdcard daemon running as media_rw (1023)
 service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0

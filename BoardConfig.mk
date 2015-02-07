@@ -31,6 +31,8 @@ TARGET_BOARD_PLATFORM_GPU := SGX351_110
 TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_ABI_LIST := armeabi-v7a,armeabi
+TARGET_CPU_ABI_LIST_32_BIT := armeabi-v7a,armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a53
 TARGET_CPU_VARIANT:= cortex-a53
@@ -45,7 +47,9 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-TARGET_BOOTLOADER_BOARD_NAME := p6000
+TARGET_BOOTLOADER_BOARD_NAME := k01q_e
+
+WITH_DEXPREOPT := true
 
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32S1,32S1
 BOARD_KERNEL_BASE = 0x40000000
@@ -65,7 +69,7 @@ TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 BOARD_HAS_LARGE_FILESYSTEM := true
 
 # Recovery
-RECOVERY_VARIANT := cwm
+#RECOVERY_VARIANT := cwm
 #RECOVERY_VARIANT := carliv
 #RECOVERY_VARIANT := philz
 #RECOVERY_VARIANT := cm
@@ -82,7 +86,6 @@ DEVICE_SCREEN_HEIGHT := 1280
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/virtual/android_usb/android0/f_mass_storage/lun%d/file
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd-backlight/brightness\"
 BRIGHTNESS_SYS_FILE := "/sys/class/leds/lcd-backlight/brightness"
-TARGET_COMMON_NAME := elephone p6000
 
 # EGL settings
 BOARD_EGL_CFG := $(LOCAL_PATH)/egl.cfg
@@ -112,3 +115,4 @@ TW_CRYPTO_FS_TYPE := "ext4"
 TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/mtk-msdc.0/by-name/userdata"
 TW_CRYPTO_MNT_POINT := "/data"
 TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered"
+TW_CRYPTO_FS_FLAGS := "0x02460000"
