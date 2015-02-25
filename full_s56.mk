@@ -13,10 +13,10 @@
 # limitations under the License.
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, device/elephone/p6000/device_p6000.mk)
+$(call inherit-product, device/acer/s56/device_s56.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-PRODUCT_NAME := full_p6000
-PRODUCT_DEVICE := p6000
-PRODUCT_BRAND := alps
-PRODUCT_MODEL := p6000
+PRODUCT_NAME := full_s56
+PRODUCT_DEVICE := s56
+PRODUCT_BRAND := Acer
+PRODUCT_MODEL := Jade-S

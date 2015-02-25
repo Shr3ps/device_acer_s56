@@ -1,5 +1,5 @@
 #
-# system.prop for p6000
+# system.prop for s56
 #
 
 ro.zygote=zygote32
@@ -8,11 +8,3 @@ dalvik.vm.dex2oat-Xmx=512m
 dalvik.vm.image-dex2oat-Xms=64m
 dalvik.vm.image-dex2oat-Xmx=64m
 ro.dalvik.vm.native.bridge=0
-
-# begin fota properties
-ro.fota.platform=MTK6732_KK
-ro.fota.type=phone
-ro.fota.oem=new-bund6732_KK
-ro.fota.device=k01q_e
-ro.fota.version=eng.jenkins.1419698357
-# end fota properties

@@ -1,5 +1,5 @@
-android_device_elephone_p6000 (mt6732)
+android_device_acer_s56 (mt6752)
 
-Elephone P6000 device folder
+Acer Liquid Jade S (S56) device folder
 
 For creating CWM recovery, TWRP and CTR recovery.

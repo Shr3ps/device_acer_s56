@@ -13,20 +13,20 @@
 # limitations under the License.
 
 # Release name
-PRODUCT_RELEASE_NAME := p6000
+PRODUCT_RELEASE_NAME := s56
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/elephone/p6000/device_p6000.mk)
+$(call inherit-product, device/acer/s56/device_s56.mk)
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := p6000
-PRODUCT_NAME := cm_p6000
-PRODUCT_BRAND := alps
-PRODUCT_MODEL := p6000
-PRODUCT_MANUFACTURER := ELEPHONE
+PRODUCT_DEVICE := s56
+PRODUCT_NAME := cm_s56
+PRODUCT_BRAND := Acer
+PRODUCT_MODEL := S56
+PRODUCT_MANUFACTURER := Acer

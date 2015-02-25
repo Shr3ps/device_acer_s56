@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_p6000.mk
+    $(LOCAL_DIR)/full_s56.mk

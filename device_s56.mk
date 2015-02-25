@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-$(call inherit-product-if-exists, vendor/elephone/p6000/p6000-vendor.mk)
+$(call inherit-product-if-exists, vendor/acer/s56/s56-vendor.mk)
 
 LOCAL_PATH := $(LOCAL_PATH)
 
